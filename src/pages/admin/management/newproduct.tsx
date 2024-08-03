@@ -7,7 +7,7 @@ import { useNewProductMutation } from "../../../redux/api/productAPI";
 import { RootState } from "../../../redux/store";
 import { responseToast } from "../../../utils/features";
 
-const newProduct = () => {
+const NewProduct = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
 
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -131,4 +131,4 @@ const newProduct = () => {
   );
 };
 
-export default newProduct;
+export default NewProduct;
