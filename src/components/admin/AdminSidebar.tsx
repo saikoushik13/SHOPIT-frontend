@@ -1,17 +1,30 @@
 import { useEffect, useState } from "react";
 import { AiFillFileText } from "react-icons/ai";
-import { FaChartBar, FaChartLine, FaChartPie } from "react-icons/fa";
+import {
+  FaChartBar,
+  FaChartLine,
+  FaChartPie,
+  FaGamepad,
+  FaStopwatch,
+} from "react-icons/fa";
 import { HiMenuAlt4 } from "react-icons/hi";
 import { IoIosPeople } from "react-icons/io";
-import { RiCoupon3Fill, RiDashboardFill, RiShoppingBag3Fill } from "react-icons/ri";
+import {
+  RiCoupon3Fill,
+  RiDashboardFill,
+  RiShoppingBag3Fill,
+} from "react-icons/ri";
 import { Link, Location, useLocation } from "react-router-dom";
 import { IconType } from "react-icons";
+import { MdDiscount } from "react-icons/md";
 
 const AdminSidebar = () => {
   const location = useLocation();
 
   const [showModal, setShowModal] = useState<boolean>(false);
-  const [phoneActive, setPhoneActive] = useState<boolean>(window.innerWidth < 1100);
+  const [phoneActive, setPhoneActive] = useState<boolean>(
+    window.innerWidth < 1100
+  );
 
   const resizeHandler = () => {
     setPhoneActive(window.innerWidth < 1100);
@@ -90,6 +103,13 @@ const DivOne = ({ location }: { location: Location }) => (
         Icon={AiFillFileText}
         location={location}
       />
+
+      <Li
+        url="/admin/discount"
+        text="Discount"
+        Icon={MdDiscount}
+        location={location}
+      />
     </ul>
   </div>
 );
@@ -125,9 +145,21 @@ const DivThree = ({ location }: { location: Location }) => (
     <h5>Apps</h5>
     <ul>
       <Li
+        url="/admin/app/stopwatch"
+        text="Stopwatch"
+        Icon={FaStopwatch}
+        location={location}
+      />
+      <Li
         url="/admin/app/coupon"
         text="Coupon"
         Icon={RiCoupon3Fill}
+        location={location}
+      />
+      <Li
+        url="/admin/app/toss"
+        text="Toss"
+        Icon={FaGamepad}
         location={location}
       />
     </ul>

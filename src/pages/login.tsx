@@ -52,7 +52,6 @@ const Login = () => {
         dispatch(userNotExist());
       }
     } catch (error) {
-      console.log(error);
       toast.error("Sign In Fail");
     }
   };
