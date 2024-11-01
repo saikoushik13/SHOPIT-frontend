@@ -16,7 +16,7 @@ import { NewOrderRequest } from "../types/api-types";
 import { responseToast } from "../utils/features";
 
 const stripeKey =
-  "pk_test_51OHpE1SEOz14slwcBOcGOweicHk9XITWgND9NAvr7ZJXIYdUiNyOHQtrbCsdQTLQqVAgDNeaDpPshuIO1PnHthtq00AJdf3gtG";
+  "pk_test_51PCd81SIGEHHrm7gRH69oicmTMbc629rpSQgOupMu4pfF33zb2gcxMrU03sRr2pBtdjxoG2zYJxcLRUQH4MYvjM300ILRYwmNS";
 
 const stripePromise = loadStripe(stripeKey);
 
