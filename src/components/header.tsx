@@ -40,6 +40,7 @@ const Header = ({ user }: PropsType) => {
       <Link onClick={() => setIsOpen(false)} to={"/cart"}>
         <FaShoppingBag />
       </Link>
+      <img src="/logo.png"  alt="Site Logo" className="header-logo" />
 
       {user?._id ? (
         <>

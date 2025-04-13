@@ -34,7 +34,14 @@ const Shipping = () => {
     e.preventDefault();
 
     dispatch(saveShippingInfo(shippingInfo));
-
+    if (!shippingInfo || Object.keys(shippingInfo).length === 0) {
+      toast.error("Please provide shipping info.");
+      return;
+    }
+    if (!cartItems || cartItems.length === 0) {
+      toast.error("No items in cart.");
+      return;
+    }
     try {
       const { data } = await axios.post(
         `${server}/api/v1/payment/create?id=${user?._id}`,
@@ -53,8 +60,8 @@ const Shipping = () => {
       navigate("/pay", {
         state: data.clientSecret,
       });
-    } catch (error) {
-      console.log(error);
+    } catch (error:any) {
+      console.log(error.response?.data);
       toast.error("Something went wrong");
     }
   };

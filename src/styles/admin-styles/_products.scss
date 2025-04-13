@@ -36,6 +36,10 @@
 .product-management {
   @include flex(row, center, unset);
   padding: 4rem;
+  margin-top: 0; 
+  /* or a smaller value like: margin-top: 1rem; */
+  padding-top: 0; 
+  /* remove if there’s a large padding at the top */
 
   > section {
     overflow-y: auto;

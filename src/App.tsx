@@ -2,7 +2,7 @@ import { onAuthStateChanged } from "firebase/auth";
 import { Suspense, lazy, useEffect } from "react";
 import { Toaster } from "react-hot-toast";
 import { useDispatch, useSelector } from "react-redux";
-import { Route, BrowserRouter as Router, Routes } from "react-router-dom";
+import { Route, BrowserRouter as Router, Routes, useLocation } from "react-router-dom";
 import Header from "./components/header";
 import Loader, { LoaderLayout } from "./components/loader";
 import ProtectedRoute from "./components/protected-route";
@@ -12,6 +12,7 @@ import { userExist, userNotExist } from "./redux/reducer/userReducer";
 import { RootState } from "./redux/store";
 import Footer from "./components/footer";
 
+// Lazy loaded pages
 const Home = lazy(() => import("./pages/home"));
 const Search = lazy(() => import("./pages/search"));
 const ProductDetails = lazy(() => import("./pages/product-details"));
@@ -36,23 +37,20 @@ const Coupon = lazy(() => import("./pages/admin/apps/coupon"));
 const Stopwatch = lazy(() => import("./pages/admin/apps/stopwatch"));
 const Toss = lazy(() => import("./pages/admin/apps/toss"));
 const NewProduct = lazy(() => import("./pages/admin/management/newproduct"));
-const ProductManagement = lazy(
-  () => import("./pages/admin/management/productmanagement")
-);
-const TransactionManagement = lazy(
-  () => import("./pages/admin/management/transactionmanagement")
-);
-const DiscountManagement = lazy(
-  () => import("./pages/admin/management/discountmanagement")
-);
-
+const ProductManagement = lazy(() => import("./pages/admin/management/productmanagement"));
+const TransactionManagement = lazy(() => import("./pages/admin/management/transactionmanagement"));
+const DiscountManagement = lazy(() => import("./pages/admin/management/discountmanagement"));
 const NewDiscount = lazy(() => import("./pages/admin/management/newdiscount"));
 
-const App = () => {
-  const { user, loading } = useSelector(
-    (state: RootState) => state.userReducer
-  );
+// FooterWrapper Component: Renders <Footer /> only if not in an admin route
+const FooterWrapper = () => {
+  const location = useLocation();
+  const isAdminRoute = location.pathname.startsWith("/admin");
+  return !isAdminRoute ? <Footer /> : null;
+};
 
+const App = () => {
+  const { user, loading } = useSelector((state: RootState) => state.userReducer);
   const dispatch = useDispatch();
 
   useEffect(() => {
@@ -60,15 +58,16 @@ const App = () => {
       if (user) {
         const data = await getUser(user.uid);
         dispatch(userExist(data.user));
-      } else dispatch(userNotExist());
+      } else {
+        dispatch(userNotExist());
+      }
     });
-  }, []);
+  }, [dispatch]);
 
   return loading ? (
     <Loader />
   ) : (
     <Router>
-      {/* Header */}
       <Header user={user} />
       <Suspense fallback={<LoaderLayout />}>
         <Routes>
@@ -86,9 +85,7 @@ const App = () => {
             }
           />
           {/* Logged In User Routes */}
-          <Route
-            element={<ProtectedRoute isAuthenticated={user ? true : false} />}
-          >
+          <Route element={<ProtectedRoute isAuthenticated={!!user} />}>
             <Route path="/shipping" element={<Shipping />} />
             <Route path="/orders" element={<Orders />} />
             <Route path="/order/:id" element={<OrderDetails />} />
@@ -100,7 +97,7 @@ const App = () => {
               <ProtectedRoute
                 isAuthenticated={true}
                 adminOnly={true}
-                admin={user?.role === "admin" ? true : false}
+                admin={user?.role === "admin"}
               />
             }
           >
@@ -109,7 +106,6 @@ const App = () => {
             <Route path="/admin/customer" element={<Customers />} />
             <Route path="/admin/transaction" element={<Transaction />} />
             <Route path="/admin/discount" element={<Discount />} />
-
             {/* Charts */}
             <Route path="/admin/chart/bar" element={<Barcharts />} />
             <Route path="/admin/chart/pie" element={<Piecharts />} />
@@ -118,29 +114,17 @@ const App = () => {
             <Route path="/admin/app/coupon" element={<Coupon />} />
             <Route path="/admin/app/stopwatch" element={<Stopwatch />} />
             <Route path="/admin/app/toss" element={<Toss />} />
-
             {/* Management */}
             <Route path="/admin/product/new" element={<NewProduct />} />
-
             <Route path="/admin/product/:id" element={<ProductManagement />} />
-
-            <Route
-              path="/admin/transaction/:id"
-              element={<TransactionManagement />}
-            />
-
+            <Route path="/admin/transaction/:id" element={<TransactionManagement />} />
             <Route path="/admin/discount/new" element={<NewDiscount />} />
-
-            <Route
-              path="/admin/discount/:id"
-              element={<DiscountManagement />}
-            />
+            <Route path="/admin/discount/:id" element={<DiscountManagement />} />
           </Route>
-
           <Route path="*" element={<NotFound />} />
         </Routes>
       </Suspense>
-      <Footer />
+      <FooterWrapper />
       <Toaster position="bottom-center" />
     </Router>
   );

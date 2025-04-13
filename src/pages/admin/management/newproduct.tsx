@@ -9,18 +9,14 @@ import { responseToast } from "../../../utils/features";
 
 const NewProduct = () => {
   const { user } = useSelector((state: RootState) => state.userReducer);
-
   const [isLoading, setIsLoading] = useState<boolean>(false);
-
   const [name, setName] = useState<string>("");
   const [category, setCategory] = useState<string>("");
   const [price, setPrice] = useState<number>(1000);
   const [stock, setStock] = useState<number>(1);
   const [description, setDescription] = useState<string>("");
-
   const [newProduct] = useNewProductMutation();
   const navigate = useNavigate();
-
   const photos = useFileHandler("multiple", 10, 5);
 
   const submitHandler = async (e: FormEvent<HTMLFormElement>) => {
@@ -28,24 +24,19 @@ const NewProduct = () => {
     setIsLoading(true);
     try {
       if (!name || !price || stock < 0 || !category) return;
-
       if (!photos.file || photos.file.length === 0) return;
 
       const formData = new FormData();
-
       formData.set("name", name);
       formData.set("description", description);
       formData.set("price", price.toString());
       formData.set("stock", stock.toString());
-
       formData.set("category", category);
-
       photos.file.forEach((file) => {
         formData.append("photos", file);
       });
 
       const res = await newProduct({ id: user?._id!, formData });
-
       responseToast(res, navigate, "/admin/product");
     } catch (error) {
       console.log(error);
@@ -58,10 +49,11 @@ const NewProduct = () => {
     <div className="admin-container">
       <AdminSidebar />
       <main className="product-management">
-        <article>
-          <form onSubmit={submitHandler}>
+        <article className="new-product-form-container">
+          <form onSubmit={submitHandler} className="new-product-form">
             <h2>New Product</h2>
-            <div>
+
+            <div className="form-group">
               <label>Name</label>
               <input
                 required
@@ -72,7 +64,7 @@ const NewProduct = () => {
               />
             </div>
 
-            <div>
+            <div className="form-group">
               <label>Description</label>
               <textarea
                 required
@@ -82,7 +74,7 @@ const NewProduct = () => {
               />
             </div>
 
-            <div>
+            <div className="form-group">
               <label>Price</label>
               <input
                 required
@@ -92,7 +84,8 @@ const NewProduct = () => {
                 onChange={(e) => setPrice(Number(e.target.value))}
               />
             </div>
-            <div>
+
+            <div className="form-group">
               <label>Stock</label>
               <input
                 required
@@ -103,7 +96,7 @@ const NewProduct = () => {
               />
             </div>
 
-            <div>
+            <div className="form-group">
               <label>Category</label>
               <input
                 required
@@ -114,7 +107,7 @@ const NewProduct = () => {
               />
             </div>
 
-            <div>
+            <div className="form-group">
               <label>Photos</label>
               <input
                 required
@@ -125,14 +118,16 @@ const NewProduct = () => {
               />
             </div>
 
-            {photos.error && <p>{photos.error}</p>}
+            {photos.error && <p className="error">{photos.error}</p>}
 
-            {photos.preview &&
-              photos.preview.map((img, i) => (
-                <img key={i} src={img} alt="New Image" />
-              ))}
-
-            <button disabled={isLoading} type="submit">
+            {/* Preview the photos inside a flex container */}
+            <div className="photos-preview-container">
+              {photos.preview &&
+                photos.preview.map((img, i) => (
+                  <img key={i} src={img} alt="New Product Preview" className="preview-image" />
+                ))}
+            </div>
+            <button disabled={isLoading} type="submit" className="create-button">
               Create
             </button>
           </form>
