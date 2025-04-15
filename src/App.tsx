@@ -11,6 +11,19 @@ import { getUser } from "./redux/api/userAPI";
 import { userExist, userNotExist } from "./redux/reducer/userReducer";
 import { RootState } from "./redux/store";
 import Footer from "./components/footer";
+import AboutUs from "./pages/footer/AboutUs";
+import OurServices from "./pages/footer/OurServices";
+import PrivacyPolicy from "./pages/footer/PrivacyPolicy";
+import AffiliateProgram from "./pages/footer/AffiliateProgram";
+import FAQ from "./pages/footer/FAQ";
+import ShippingPolicy from "./pages/footer/ShippingPolicy";
+import ReturnsPolicy from "./pages/footer/ReturnsPolicy";
+import OrderStatus from "./pages/footer/OrderStatus";
+import PaymentOptions from "./pages/footer/PaymentOptions";
+
+
+
+
 
 // Lazy loaded pages
 const Home = lazy(() => import("./pages/home"));
@@ -23,6 +36,8 @@ const Orders = lazy(() => import("./pages/orders"));
 const OrderDetails = lazy(() => import("./pages/order-details"));
 const NotFound = lazy(() => import("./pages/not-found"));
 const Checkout = lazy(() => import("./pages/checkout"));
+const Signup = lazy(() => import("./pages/signup"));
+
 
 // Admin Routes Importing
 const Dashboard = lazy(() => import("./pages/admin/dashboard"));
@@ -42,12 +57,19 @@ const TransactionManagement = lazy(() => import("./pages/admin/management/transa
 const DiscountManagement = lazy(() => import("./pages/admin/management/discountmanagement"));
 const NewDiscount = lazy(() => import("./pages/admin/management/newdiscount"));
 
-// FooterWrapper Component: Renders <Footer /> only if not in an admin route
 const FooterWrapper = () => {
   const location = useLocation();
-  const isAdminRoute = location.pathname.startsWith("/admin");
-  return !isAdminRoute ? <Footer /> : null;
+  const hiddenRoutes = ["/admin", "/login", "/signup"];
+
+  // Check if the current path starts with any of the hidden routes
+  const shouldHideFooter = hiddenRoutes.some((route) =>
+    location.pathname.startsWith(route)
+  );
+
+  return !shouldHideFooter ? <Footer /> : null;
 };
+
+
 
 const App = () => {
   const { user, loading } = useSelector((state: RootState) => state.userReducer);
@@ -75,9 +97,27 @@ const App = () => {
           <Route path="/search" element={<Search />} />
           <Route path="/product/:id" element={<ProductDetails />} />
           <Route path="/cart" element={<Cart />} />
+          <Route path="/about" element={<AboutUs />} />
+      <Route path="/services" element={<OurServices />} />
+      <Route path="/privacy" element={<PrivacyPolicy />} />
+      <Route path="/affiliate" element={<AffiliateProgram />} />
+      <Route path="/faq" element={<FAQ />} />
+      <Route path="/shipping-policy" element={<ShippingPolicy />} />
+      <Route path="/returns" element={<ReturnsPolicy />} />
+      <Route path="/order-status" element={<OrderStatus />} />
+      <Route path="/payment-options" element={<PaymentOptions />} />
+      <Route
+  path="/signup"
+  element={
+    <ProtectedRoute isAuthenticated={user ? false : true}>
+      <Signup />
+    </ProtectedRoute>
+  }
+/>
           {/* Not logged In Route */}
           <Route
             path="/login"
+            
             element={
               <ProtectedRoute isAuthenticated={user ? false : true}>
                 <Login />

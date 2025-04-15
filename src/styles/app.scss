@@ -79,9 +79,9 @@ $color3: rgb(0, 104, 136);
   .header-logo {
     position: absolute;
     left: 50%;
-    top: -70%; // Adjust this value as needed—lower values or even negative values move it upward
+    top: -120%; // Adjust this value as needed—lower values or even negative values move it upward
     transform: translate(-50%, -20px); // The "-20px" moves the logo 20 pixels upward
-    max-height: 200px; // Your updated size
+    max-height: 250px; // Your updated size
   }
   a {
     color: $color2;
@@ -428,4 +428,211 @@ $color3: rgb(0, 104, 136);
 .error {
   color: red;
   font-size: 0.9rem;
+}
+
+.banner img {
+  width: 100%;            /* Makes the image span full width of its container */
+  height: 200px;          /* Fixed height; adjust as needed */
+       /* Ensures the image covers the area without distorting, cropping if necessary */
+}
+// Global styles to ensure a full-height flex container.
+// (Ensure your root element, such as #root, uses these rules)
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+}
+
+#root, .app-container {  // Adjust based on your root container's class/id.
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh;
+}
+
+// Assuming your main content is wrapped in a <main> element:
+main {
+  flex: 1;
+}
+
+// Footer Styles:
+.footer {
+  padding: 2rem 1rem;
+  border-top: 1px solid #ddd;
+  margin-top: auto;           // Pushes the footer to the bottom
+
+}
+.footer-page {
+  max-width: 800px;         // Limits the width for better readability
+  margin: 2rem auto;        // Centers the content on the page with vertical spacing
+  padding: 1rem;
+  font-family: 'Helvetica Neue', Arial, sans-serif;  // Adjust the font family as needed
+  color: #555;              // Base text color
+
+  // Headings
+  h1 {
+    font-size: 2rem;
+    color: #333;
+    margin-bottom: 1rem;
+    font-weight: bold;
+  }
+  
+  h2 {
+    font-size: 1.5rem;
+    color: #333;
+    margin-bottom: 0.75rem;
+    font-weight: bold;
+  }
+  
+  // Paragraphs
+  p {
+    font-size: 1rem;
+    line-height: 1.6;
+    margin-bottom: 1rem;
+  }
+
+  // Lists
+  ul {
+    list-style-type: disc;
+    margin-left: 1.5rem;
+    padding-left: 0;
+    margin-bottom: 1rem;
+    
+    li {
+      font-size: 1rem;
+      line-height: 1.6;
+      margin-bottom: 0.5rem;
+    }
+  }
+  
+  // Links inside pages
+  a {
+    color: #007bff;
+    text-decoration: none;
+    transition: color 0.3s;
+    
+    &:hover {
+      text-decoration: underline;
+      color: #0056b3;
+    }
+  }
+}
+
+.signup {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  background: #ffffff;
+  padding-top: 8rem; 
+
+  main {
+    width: 90%;
+    max-width: 400px;
+    background: #fff;
+    padding: 2rem;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    text-align: center;
+
+    h1 {
+      margin-bottom: 1rem;
+      font-size: 1.8rem;
+      color: #333;
+    }
+
+    .form-group {
+      display: flex;
+      flex-direction: column;
+      margin-bottom: 1rem;
+      text-align: left;
+
+      label {
+        font-size: 0.9rem;
+        margin-bottom: 0.3rem;
+        color: #555;
+      }
+
+      input,
+      select {
+        padding: 0.75rem;
+        border: 1px solid #ddd;
+        border-radius: 4px;
+        font-size: 1rem;
+      }
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #eee;
+      margin: 1.5rem 0;
+    }
+
+    .divider {
+      margin: 1.5rem 0;
+      font-size: 0.9rem;
+      color: #888;
+      position: relative;
+      
+      &::before,
+      &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 40%;
+        height: 1px;
+        background: #ddd;
+      }
+      
+      &::before {
+        left: 0;
+      }
+      
+      &::after {
+        right: 0;
+      }
+    }
+
+    .btn {
+      padding: 0.8rem;
+      background: #3e7dfa;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      font-size: 1rem;
+      cursor: pointer;
+      transition: background 0.3s ease;
+      width: 100%;
+      margin-bottom: 1rem;
+
+      &:hover {
+        background: #3670cf;
+      }
+
+      &.google {
+        background: #db4437;
+
+        &:hover {
+          background: #c33d2f;
+        }
+      }
+    }
+
+    // New styling for the "Already have an account?" login link.
+    .login-link {
+      margin-top: 1rem;
+      font-size: 0.9rem;
+      color: #555;
+
+      a {
+        color: #3e7dfa;
+        text-decoration: none;
+        transition: color 0.3s ease;
+
+        &:hover {
+          color: #3670cf;
+          text-decoration: underline;
+        }
+      }
+    }
+  }
 }

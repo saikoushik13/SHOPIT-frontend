@@ -1,9 +1,5 @@
-import {
-  FaFacebookF,
-  FaInstagram,
-  FaLinkedinIn,
-  FaTwitter,
-} from "react-icons/fa6";
+import { Link } from "react-router-dom";
+import { FaFacebookF, FaInstagram, FaLinkedinIn, FaTwitter } from "react-icons/fa6";
 
 const Footer = () => {
   return (
@@ -14,16 +10,16 @@ const Footer = () => {
             <h4>Company</h4>
             <ul>
               <li>
-                <a href="#">About Us</a>
+                <Link to="/about">About Us</Link>
               </li>
               <li>
-                <a href="#">Our Services</a>
+                <Link to="/services">Our Services</Link>
               </li>
               <li>
-                <a href="#">Privacy Policy</a>
+                <Link to="/privacy">Privacy Policy</Link>
               </li>
               <li>
-                <a href="#">Affiliate Program</a>
+                <Link to="/affiliate">Affiliate Program</Link>
               </li>
             </ul>
           </div>
@@ -31,52 +27,35 @@ const Footer = () => {
             <h4>Get Help</h4>
             <ul>
               <li>
-                <a href="#">FAQ</a>
+                <Link to="/faq">FAQ</Link>
               </li>
               <li>
-                <a href="#">Shipping</a>
+                <Link to="/shipping-policy">Shipping</Link>
               </li>
               <li>
-                <a href="#">Returns</a>
+                <Link to="/returns">Returns</Link>
               </li>
               <li>
-                <a href="#">Order Status</a>
+                <Link to="/order-status">Order Status</Link>
               </li>
               <li>
-                <a href="#">Payment Options</a>
-              </li>
-            </ul>
-          </div>
-          <div className="footer-col">
-            <h4>Online Shop</h4>
-            <ul>
-              <li>
-                <a href="#">Watch</a>
-              </li>
-              <li>
-                <a href="#">Bag</a>
-              </li>
-              <li>
-                <a href="#">Shoes</a>
-              </li>
-              <li>
-                <a href="#">Dress</a>
+                <Link to="/payment-options">Payment Options</Link>
               </li>
             </ul>
           </div>
           <div className="footer-col">
             <h4>Follow Us</h4>
             <div className="social-links">
-              <a href="#">
+              <a href="https://facebook.com" target="_blank" rel="noopener noreferrer">
                 <FaFacebookF />
               </a>
-              <a href="#">
+              <a href="https://twitter.com" target="_blank" rel="noopener noreferrer">
                 <FaTwitter />
               </a>
-              <a href="#">
+              <a href="https://instagram.com" target="_blank" rel="noopener noreferrer">
                 <FaInstagram />
               </a>
-              <a href="#">
+              <a href="https://linkedin.com" target="_blank" rel="noopener noreferrer">
                 <FaLinkedinIn />
               </a>
             </div>

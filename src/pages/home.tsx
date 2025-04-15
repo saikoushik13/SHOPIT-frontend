@@ -15,88 +15,51 @@ import { LuShieldCheck } from "react-icons/lu";
 
 const clients = [
   {
-    src: "https://www.vectorlogo.zone/logos/reactjs/reactjs-ar21.svg",
+    src: "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744564768/Styl_brygkr.jpg",
     alt: "react",
   },
   {
-    src: "https://www.vectorlogo.zone/logos/nodejs/nodejs-ar21.svg",
+    src: "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744564767/Clothes_zpfjdj.jpg",
     alt: "node",
   },
   {
-    src: "https://www.vectorlogo.zone/logos/mongodb/mongodb-ar21.svg",
+    src: "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744564768/Dapper_fovdfb.jpg",
     alt: "mongodb",
   },
   {
-    src: "https://www.vectorlogo.zone/logos/expressjs/expressjs-ar21.svg",
+    src: "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744564768/Stop_and_shopp___qss9wf.jpg",
     alt: "express",
   },
   {
-    src: "https://www.vectorlogo.zone/logos/js_redux/js_redux-ar21.svg",
+    src: "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744564767/Collection_By_Manav_naayrr.jpg",
     alt: "redux",
   },
   {
-    src: "https://www.vectorlogo.zone/logos/typescriptlang/typescriptlang-ar21.svg",
+    src: "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744564768/Zivara_nwxo4w.jpg",
     alt: "typescript",
   },
   {
-    src: "https://www.vectorlogo.zone/logos/sass-lang/sass-lang-ar21.svg",
+    src: "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744564768/Streetsole_Boutique_n9i32c.jpg",
     alt: "sass",
   },
   {
-    src: "https://www.vectorlogo.zone/logos/firebase/firebase-ar21.svg",
+    src: "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744564768/Verses_Store_pppafg.jpg",
     alt: "firebase",
   },
   {
-    src: "https://www.vectorlogo.zone/logos/figma/figma-ar21.svg",
+    src: "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744564768/Streetsole_Boutique_n9i32c.jpg",
     alt: "figma",
   },
 
-  {
-    src: "https://www.vectorlogo.zone/logos/github/github-ar21.svg",
-    alt: "github",
-  },
-
-  {
-    src: "https://www.vectorlogo.zone/logos/docker/docker-ar21.svg",
-    alt: "Docker",
-  },
-  {
-    src: "https://www.vectorlogo.zone/logos/kubernetes/kubernetes-ar21.svg",
-    alt: "Kubernetes",
-  },
-  {
-    src: "https://www.vectorlogo.zone/logos/nestjs/nestjs-ar21.svg",
-    alt: "Nest.js",
-  },
-
-  {
-    src: "https://www.vectorlogo.zone/logos/graphql/graphql-ar21.svg",
-    alt: "GraphQL",
-  },
-
-  {
-    src: "https://www.vectorlogo.zone/logos/jestjsio/jestjsio-ar21.svg",
-    alt: "Jest",
-  },
-
-  {
-    src: "https://www.vectorlogo.zone/logos/redis/redis-ar21.svg",
-    alt: "Redis",
-  },
-
-  {
-    src: "https://www.vectorlogo.zone/logos/postgresql/postgresql-ar21.svg",
-    alt: "PostgreSQL",
-  },
-  {
-    src: "https://www.vectorlogo.zone/logos/jenkins/jenkins-ar21.svg",
-    alt: "Jenkins",
-  },
 ];
 
 const banners = [
-  "https://res.cloudinary.com/dj5q966nb/image/upload/v1719253445/rmbjpuzctjdbtt8hewaz.png",
-  "https://res.cloudinary.com/dj5q966nb/image/upload/v1719253433/ticeufjqvf6napjhdiee.png",
+  "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744650336/aaf8c01e-031d-4ead-b868-94abf9cad670_aqebem.jpg",
+  "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744650336/output_5_jxuh9i.jpg",
+  "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744650337/output_2_zmonlv.jpg",
+  "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744650337/output_aeqici.jpg",
+  "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744650336/output_3_smxa6b.jpg",
+  "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744650336/output_4_uci7fm.jpg"
 ];
 const categories = [
   "Electronics",
@@ -145,7 +108,7 @@ const Home = () => {
   if (isError) toast.error("Cannot Fetch the Products");
 
   const coverMessage =
-    "Fashion isn't just clothes; it's a vibrant language. Silhouettes and textures speak volumes, a conversation starter with every bold print. It's a way to tell our story, a confidence booster, or a playful exploration. From elegance to rebellion, fashion lets us navigate the world in style.".split(
+    "Shopping isn't just buying; it's a cultural journey. Local goods and flavors speak volumes, a celebration with every crafted piece. It's a way to support stories, a community builder, or mindful choice. From heritage to innovation, MercatoHub connects us all.".split(
       " "
     );
 
@@ -167,7 +130,7 @@ const Home = () => {
           </aside>
           <Slider
             autoplay
-            autoplayDuration={1500}
+            autoplayDuration={2500}
             showNav={false}
             images={banners}
           />
@@ -215,7 +178,7 @@ const Home = () => {
             animate={{ x: 0, opacity: 1 }}
             transition={{ duration: 0.5 }}
           >
-            Fashion
+            MercatoHub
           </motion.h2>
           {coverMessage.map((el, i) => (
             <motion.span
@@ -279,7 +242,7 @@ const Home = () => {
               },
             }}
           >
-            Trusted By 100+ Companies in 30+ countries
+            Trusted By 20+ Companies 
           </motion.p>
         </div>
       </article>
