@@ -123,7 +123,7 @@ const TransactionManagement = () => {
                 Status:{" "}
                 <span
                   className={
-                    status === "Delivered"
+                    status === "Completed"
                       ? "purple"
                       : status === "Shipped"
                       ? "green"

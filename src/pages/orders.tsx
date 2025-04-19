@@ -64,7 +64,7 @@ const Orders = () => {
               className={
                 i.status === "Processing"
                   ? "red"
-                  : i.status === "Shipped"
+                  : i.status === "Completed"
                   ? "green"
                   : "purple"
               }

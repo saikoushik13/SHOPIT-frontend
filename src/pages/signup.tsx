@@ -35,7 +35,7 @@ const Signup = () => {
       const payload = {
         name,
         email: user.email!,
-        photo: " ",
+         photo: user.photoURL || " ",
         gender,
         role: "user",
         dob,

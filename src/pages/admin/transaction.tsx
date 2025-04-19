@@ -62,7 +62,7 @@ const Transaction = () => {
     if (data)
       setRows(
         data.orders.map((i) => ({
-          user: i.user.name,
+          user: i.user?.name ?? "Unknown User",
           amount: i.total,
           discount: i.discount,
           quantity: i.orderItems.length,
@@ -71,7 +71,7 @@ const Transaction = () => {
               className={
                 i.status === "Processing"
                   ? "red"
-                  : i.status === "Shipped"
+                  : i.status === "Completed"
                   ? "green"
                   : "purple"
               }
