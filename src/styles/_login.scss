@@ -24,7 +24,22 @@
         text-align: center;
         margin: 2rem;
       }
-
+      .login-link {
+        margin-top: 1rem;
+        font-size: 0.9rem;
+        color: #555;
+  
+        a {
+          color: #3e7dfa;
+          text-decoration: none;
+          transition: color 0.3s ease;
+  
+          &:hover {
+            color: #3670cf;
+            text-decoration: underline;
+          }
+        }
+      }
       button {
         width: 70%;
         margin: auto;

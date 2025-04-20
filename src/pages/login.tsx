@@ -8,6 +8,7 @@ import { MessageResponse } from "../types/api-types";
 import { userExist, userNotExist } from "../redux/reducer/userReducer";
 import { useDispatch } from "react-redux";
 import { FcGoogle } from "react-icons/fc";
+import { Link } from "react-router-dom";
 
 const Login = () => {
   const dispatch = useDispatch();
@@ -139,6 +140,11 @@ const Login = () => {
             {/* Assuming you still want to use the Google icon */}
             <FcGoogle /> <span>Sign in with Google</span>
           </button>
+        </div>
+        <div className="signup-prompt">
+           <p className="login-link">
+                    Don't have an account? <Link to="/signup">Signup</Link>
+            </p>
         </div>
       </main>
     </div>
