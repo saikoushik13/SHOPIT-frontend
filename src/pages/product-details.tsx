@@ -121,6 +121,8 @@ const ProductDetails = () => {
                 showNav={false}
                 onClick={() => setCarouselOpen(true)}
                 images={data?.product?.photos.map((i) => i.url) || []}
+                objectFit="contain"
+               
               />
               {carouselOpen && (
                 <MyntraCarousel
@@ -128,6 +130,8 @@ const ProductDetails = () => {
                   PrevButton={PrevButton}
                   setIsOpen={setCarouselOpen}
                   images={data?.product?.photos.map((i) => i.url) || []}
+                  objectFit="contain"
+        
                 />
               )}
             </section>

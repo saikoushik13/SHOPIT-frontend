@@ -46,10 +46,7 @@ const clients = [
     src: "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744564768/Verses_Store_pppafg.jpg",
     alt: "firebase",
   },
-  {
-    src: "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744564768/Streetsole_Boutique_n9i32c.jpg",
-    alt: "figma",
-  },
+ 
 
 ];
 
@@ -62,18 +59,15 @@ const banners = [
   "https://res.cloudinary.com/ddfbxzzum/image/upload/v1744650336/output_4_uci7fm.jpg"
 ];
 const categories = [
-  "Electronics",
-  "Mobiles",
-  "Laptops",
   "Books",
-  "Fashion",
-  "Appliances",
+  "Pants",
+  "Shirts",
   "Furniture",
-  "Home Decor",
-  "Grocery",
+  "home decoration ",
+  "Groceries",
   "Beauty",
   "Toys",
-  "Fitness",
+  "Shoes"
 ];
 
 const services = [
@@ -117,24 +111,23 @@ const Home = () => {
       <div className="home">
         <section></section>
 
-        <div>
-          <aside>
+        {/* Banner Section */}
+        <div className="banner-container"> <div className="banner-overlay"></div> <Slider autoplay autoplayDuration={2500} showNav={false} images={banners} /> <div className="banner-content"> <motion.h1 initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8 }} > Discover Your Style </motion.h1> <motion.p initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.2 }} > Shop the latest trends at MercatoHub </motion.p> <motion.a href="/search" className="banner-cta" initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} transition={{ duration: 0.8, delay: 0.4 }} > Shop Now </motion.a> </div> </div>
+
+        {/* Categories Section */}
+        <aside className="categories-container">
             <h1>Categories</h1>
-            <ul>
+            
+          <ul>
               {categories.map((i) => (
                 <li key={i}>
-                  <Link to={`/search?category=${i.toLowerCase()}`}>{i}</Link>
+                  <Link to={`/search?category=${i.toLowerCase()}`} className="category-item">
+                   
+                    {i}
+                  </Link>
                 </li>
-              ))}
-            </ul>
+              ))}</ul>
           </aside>
-          <Slider
-            autoplay
-            autoplayDuration={2500}
-            showNav={false}
-            images={banners}
-          />
-        </div>
 
         <h1>
           Latest Products
@@ -242,7 +235,7 @@ const Home = () => {
               },
             }}
           >
-            Trusted By 20+ Companies 
+            Trusted By Many Emerging Companies and Many More To Come
           </motion.p>
         </div>
       </article>
@@ -271,8 +264,8 @@ const Home = () => {
             >
               <div>{service.icon}</div>
               <section>
-                <h3>{service.title}Y</h3>
-                <p>{service.title}</p>
+                <h3>{service.title}</h3>
+                <p>{service.description}</p>
               </section>
             </motion.li>
           ))}
@@ -283,3 +276,5 @@ const Home = () => {
 };
 
 export default Home;
+
+

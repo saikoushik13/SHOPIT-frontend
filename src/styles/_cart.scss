@@ -58,8 +58,11 @@
 .cart-item {
   padding: 1rem;
   @include flex(row, flex-start, center, 3rem);
+
   > img {
-    @include square(10rem);
+    height: 10rem; /* Fixed height, matching original size but using height-based resizing */
+    width: auto; /* Maintain aspect ratio */
+    max-width: 10rem; /* Ensure image fits within original square size */
     object-fit: contain;
   }
 

@@ -50,7 +50,7 @@ const Search = () => {
   };
 
   const isPrevPage = page > 1;
-  const isNextPage = page < 4;
+  const isNextPage = page < (searchedData?.totalPage || 1); // Updated to use totalPage
 
   if (isError) {
     const err = error as CustomError;
@@ -82,6 +82,14 @@ const Search = () => {
             value={maxPrice}
             onChange={(e) => setMaxPrice(Number(e.target.value))}
           />
+           <input
+    type="number"
+    min={100}
+    max={100000}
+    value={maxPrice}
+    onChange={(e) => setMaxPrice(Number(e.target.value))}
+    placeholder="Enter max price"
+  />
         </div>
 
         <div>

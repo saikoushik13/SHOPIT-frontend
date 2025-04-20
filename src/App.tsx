@@ -66,7 +66,11 @@ const FooterWrapper = () => {
     location.pathname.startsWith(route)
   );
 
-  return !shouldHideFooter ? <Footer /> : null;
+  return (
+    <>
+      {!shouldHideFooter && <Footer />}
+    </>
+  );
 };
 
 

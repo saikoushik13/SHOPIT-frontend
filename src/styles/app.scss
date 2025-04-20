@@ -76,29 +76,50 @@ $color3: rgb(0, 104, 136);
   @include flex(row, flex-end, stretch, 1.2rem);
   padding: 1rem;
   position: relative;
+
   .header-logo {
     position: absolute;
     left: 50%;
-    top: -120%; // Adjust this value as needed—lower values or even negative values move it upward
-    transform: translate(-50%, -20px); // The "-20px" moves the logo 20 pixels upward
-    max-height: 250px; // Your updated size
+    top: -80%;
+    transform: translate(-50%, -20px);
+    max-height: 250px;
   }
+  .cart-icon-wrapper {
+    position: relative;
+    display: inline-block;
+  
+    .cart-badge {
+      position: absolute;
+      top: -8px;
+      right: -10px;
+      background-color: crimson;
+      color: white;
+      border-radius: 50%;
+      font-size: 0.75rem;
+      padding: 0.2rem 0.45rem;
+      font-weight: bold;
+    }
+  }
+  
+
   a {
     color: $color2;
-    letter-spacing: 2px;
-    font-size: 1.2rem;
+    letter-spacing: 1.5px;
+    font-size: 1.5rem; // increased from 1.2rem to 1.5rem
+    padding: 0.4rem 0.8rem; // added padding for clickable area
 
     &:hover {
       color: $color3;
     }
   }
-  
 
   button {
     border: none;
-    font-size: 1.2rem;
+    font-size: 1.5rem; // match link size
     cursor: pointer;
     background-color: transparent;
+    padding: 0.4rem 0.8rem;
+
     &:hover {
       color: $color3;
     }
@@ -112,11 +133,13 @@ $color3: rgb(0, 104, 136);
     position: absolute;
     left: calc(100% - 100px);
     top: 8%;
+
     > div {
       @include flex(column, flex-start, center, 0.25rem);
     }
   }
 }
+
 
 .not-found {
   height: 80vh;
@@ -149,10 +172,9 @@ $color3: rgb(0, 104, 136);
 .admin-container {
   @include grid(1fr 4fr, 2rem);
   height: 100vh;
-  background-color: white;
+
   > aside {
     width: 100%;
-    background-color: white;
     padding: 1rem;
     z-index: 10;
     overflow-y: auto;
@@ -184,6 +206,7 @@ $color3: rgb(0, 104, 136);
 }
 
 .table {
+
   border-collapse: collapse;
   margin-bottom: 0;
   width: 100%;
@@ -518,6 +541,7 @@ main {
 }
 
 .signup {
+  @include heading(1px);
   display: flex;
   align-items: center;
   justify-content: center;
@@ -535,10 +559,18 @@ main {
     text-align: center;
 
     h1 {
+      @include heading(1px);
       margin-bottom: 1rem;
       font-size: 1.8rem;
       color: #333;
     }
+    h2{
+      @include heading(1px);
+      margin-bottom: 1rem;
+      font-size: 1.5rem;
+      color: #333;
+    }
+    
 
     .form-group {
       display: flex;
@@ -636,3 +668,4 @@ main {
     }
   }
 }
+

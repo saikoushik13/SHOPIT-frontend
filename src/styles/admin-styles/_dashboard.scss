@@ -1,6 +1,6 @@
 .dashboard {
   overflow-y: auto;
-
+  min-height: 100vh;
   .bar {
     height: 4rem;
     @include flex(row, unset);
